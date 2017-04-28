@@ -1,0 +1,35 @@
+<form [formGroup]="formGroup" (submit)="onSubmit()">
+  <div>
+    用户名：<input type="text" formControlName="username" />
+  </div>
+  <div [hidden]="!formGroup.hasError('required','username')">
+    用户名不能为空
+  </div>
+  <div [hidden]="!formGroup.hasError('minlength','username')">
+    用户名最小长度为5
+  </div>
+  <div>
+    手机号：<input type="number" formControlName="mobile"/>
+  </div>
+  <div [hidden]="!formGroup.hasError('mobile','mobile')">
+    11位数的手机号码
+  </div>
+  <div formGroupName="passwordsGroup">
+    <div>
+      密&nbsp;码：<input type="password" formControlName="password"/>
+    </div>
+    <div [hidden]="!formGroup.hasError('minlength',['passwordsGroup','password'])">
+      密码最小长度为5
+    </div>
+    <div>
+      确认密码：<input type="password" formControlName="pconfirm"/>
+    </div>
+    <div [hidden]="!formGroup.hasError('equal','passwordsGroup')">
+      {{formGroup.getError('mobile')?.mobile}}
+    </div>
+  </div>
+  <button type="submit">注册</button>
+  <div>
+    {{formGroup.status}}
+  </div>
+</form>
