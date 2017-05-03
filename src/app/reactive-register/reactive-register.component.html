@@ -25,7 +25,7 @@
       确认密码：<input type="password" formControlName="pconfirm"/>
     </div>
     <div [hidden]="!formGroup.hasError('equal','passwordsGroup')">
-      {{formGroup.getError('mobile')?.mobile}}
+      {{formGroup.getError('mobile')?.errorMsg}}
     </div>
   </div>
   <button type="submit">注册</button>
